@@ -50,20 +50,5 @@ namespace EhealthV2.Repositories.Users
             throw new NotImplementedException();
         }
 
-        public string getJsonFromEclipse()
-        {
-            // HTTP CLIENT SETTINGS
-            httpClient.DefaultRequestHeaders.Accept.Clear();
-            httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-
-            // GET RESPONSE FROM GetJsonAsync FUNCTION
-            Task<String> response = GetJsonAsync();
-
-            //response.Result.ToString();
-
-            // RETURN RESPONSE TO STRING
-            return response.Result.ToString();       
-        }
-
     }
 }

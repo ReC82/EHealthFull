@@ -1,0 +1,31 @@
+package com.example.demon.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.Clinic;
+import com.example.demo.repository.clinicRepository;
+
+@RestController
+public class ClinicController {
+	
+	@Autowired
+	private clinicRepository clinicRepo;
+	
+	@GetMapping("/")
+	public String index()
+	{
+	
+		return "Welcome";
+	}
+	
+	@PostMapping("/saveClinic")
+	public Clinic saveData(@RequestBody Clinic clinic)
+	{
+		clinicRepo.save(clinic);
+		return clinic;
+	}
+}

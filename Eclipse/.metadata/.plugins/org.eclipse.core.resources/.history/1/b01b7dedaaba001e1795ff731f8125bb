@@ -1,0 +1,12 @@
+package com.example.demo;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface clinicRepository extends JpaRepository<Clinic, Integer>{
+
+	static void saveclinic(Clinic clinic) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}

@@ -1,0 +1,70 @@
+﻿@page
+@using EhealthV2.Models
+@model EhealthV2.Models.Users.Clinics
+@{
+
+}
+
+<h2>Create a new Clinic</h2>
+
+<form method="post" asp-controller="ClinicsControllers" asp-action="AddClinic">
+    <div class="form-group">
+        <label asp-for="clinicName" class="control-label">Name</label>
+        <input asp-for="clinicName" class="form-control" />
+        <span asp-validation-for="clinicName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="clinicAddress" class="control-label">Address</label>
+        <input asp-for="clinicAddress" class="form-control" />
+        <span asp-validation-for="clinicAddress" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="clinicAddressNumber" class="control-label">N°</label>
+        <input asp-for="clinicAddressNumber" class="form-control" />
+        <span asp-validation-for="clinicAddressNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="clinicPostalCode" class="control-label">Postal Code</label>
+        <input asp-for="clinicPostalCode" class="form-control" />
+        <span asp-validation-for="clinicPostalCode" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="clinicCity" class="control-label">City</label>
+        <input asp-for="clinicCity" class="form-control" />
+        <span asp-validation-for="clinicCity" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="clinicEmail" class="control-label">Email</label>
+        <input asp-for="clinicEmail" class="form-control" />
+        <span asp-validation-for="clinicEmail" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="clinicPhone" class="control-label">Phone</label>
+        <input asp-for="clinicPhone" class="form-control" />
+        <span asp-validation-for="clinicPhone" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="clinicInami" class="control-label">Inami N°</label>
+        <input asp-for="clinicInami" class="form-control" />
+        <span asp-validation-for="clinicInami" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Username" class="control-label">Username</label>
+        <input asp-for="Username" class="form-control" />
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Password" class="control-label">Password</label>
+        <input asp-for="Password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Signup as a Clinic" class="btn btn-primary" />
+    </div>
+</form>

@@ -1,0 +1,49 @@
+package com.example.demo.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
+public class Clinic {
+	@Id
+	private int id;
+	private String Name;
+	private String Address;
+	
+	public Clinic() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Clinic(int id, String name, String address) {
+		super();
+		this.id = id;
+		Name = name;
+		Address = address;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return Name;
+	}
+	public void setName(String name) {
+		Name = name;
+	}
+	public String getAddress() {
+		return Address;
+	}
+	public void setAddress(String address) {
+		Address = address;
+	}
+	
+	@Override
+	public String toString() {
+		return "Clinic [id=" + id + ", Name=" + Name + ", Address=" + Address + "]";
+	}
+	
+	
+}

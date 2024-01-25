@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EhealthV2.Models.Users
 {
-    public class Doctors : WebUsers
+    public class Doctors
     {
         [Key]
         public int DocId { get; set; }

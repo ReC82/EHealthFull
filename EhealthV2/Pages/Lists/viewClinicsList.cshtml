@@ -1,0 +1,27 @@
+﻿@page
+@model List<EhealthV2.Models.Users.Clinics>
+
+@{
+}
+
+<h2>Clinics List</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Clinic Name</th>
+            <th>Clinic Address</th>
+            <!-- Add other columns as needed -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var clinic in Model)
+        {
+            <tr>
+                <td>@clinic.clinicName</td>
+                <td>@clinic.clinicAddress</td>
+                <!-- Add other cells as needed -->
+            </tr>
+        }
+    </tbody>
+</table>

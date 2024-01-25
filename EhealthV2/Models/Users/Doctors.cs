@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EhealthV2.Models.Users
@@ -26,4 +27,5 @@ namespace EhealthV2.Models.Users
         //public string Organisation { get; set; }
 
     }
+
 }

@@ -8,9 +8,10 @@ namespace EhealthV2.Repositories.Users
 
         void AddClinic(string json);
 
-        string ConvertDataToJson(string json);
+        public List<Clinics> GetClinicsFromApi();
 
-
-        string getJsonFromEclipse();
     }
+
+
 }
+

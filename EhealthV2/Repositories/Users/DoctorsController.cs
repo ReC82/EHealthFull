@@ -64,31 +64,6 @@ namespace EhealthV2.Repositories.Users
             // RETURN RESPONSE TO STRING
             return response.Result.ToString();       
         }
-        public async Task<string> GetJsonAsync()
-        {
-            // DEFINE API URL
-            string apiUrl = "http://localhost:8080/getClinics";
 
-            try
-            {
-                // SEND A GET TO OBTAIN A JSON
-                HttpResponseMessage response = await httpClient.GetAsync(apiUrl);
-                
-                // VERIFY THE STATUS
-                response.EnsureSuccessStatusCode();
-
-                // READ RESPONSES AS A STRING
-                string jsonResponse = await response.Content.ReadAsStringAsync();
-
-                // RETURN THE STRING
-                return jsonResponse;
-            }
-            catch (Exception ex)
-            {
-                // EXCEPTION HANDLER
-                Console.WriteLine($"Error: {ex.Message}");
-                return null;
-            }
-        }
     }
 }

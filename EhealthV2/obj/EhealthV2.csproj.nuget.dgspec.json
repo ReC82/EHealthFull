@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Devops\\EhealthV2\\EhealthV2.csproj": {}
+    "E:\\Devops\\EHealthFinal\\EhealthV2\\EhealthV2.csproj": {}
   },
   "projects": {
-    "E:\\Devops\\EhealthV2\\EhealthV2.csproj": {
+    "E:\\Devops\\EHealthFinal\\EhealthV2\\EhealthV2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Devops\\EhealthV2\\EhealthV2.csproj",
+        "projectUniqueName": "E:\\Devops\\EHealthFinal\\EhealthV2\\EhealthV2.csproj",
         "projectName": "EhealthV2",
-        "projectPath": "E:\\Devops\\EhealthV2\\EhealthV2.csproj",
+        "projectPath": "E:\\Devops\\EHealthFinal\\EhealthV2\\EhealthV2.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "E:\\Devops\\EhealthV2\\obj\\",
+        "outputPath": "E:\\Devops\\EHealthFinal\\EhealthV2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

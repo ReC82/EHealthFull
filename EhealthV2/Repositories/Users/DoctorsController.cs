@@ -21,34 +21,18 @@ namespace EhealthV2.Repositories.Users
             _context.Add(Doctor);
         }
 
-        public void DeleteDoctor(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<Doctors> DoctorsInitData()
         {
             return _context.Doctors.ToList();
             //return new List<Doctors>(); // or throw an exception, depending on your application's requirements        
         }
 
-        public IEnumerable<Doctors> GetAllDoctors()
+        /*public List<Doctors> GetDoctors()
         {
-            //NOT IMPLEMENTED YET
-            throw new NotImplementedException();
-        }
+            return _context.Doctors.ToList();
+        }*/
 
-        public Doctors GetDoctorsById(int id)
-        {
-            //NOT IMPLEMENTED YET
-            throw new NotImplementedException();
-        }
 
-        public void saveChanges()
-        {
-            //NOT IMPLEMENTED YET
-            throw new NotImplementedException();
-        }
 
     }
 }

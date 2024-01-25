@@ -2,23 +2,18 @@
 using EhealthV2.Models.Users;
 using Microsoft.AspNetCore.Mvc;
 using System.Text;
+using System.Text.Json;
+using Newtonsoft.Json;
+using Bogus;
+using EhealthV2.Controllers;
 
 namespace EhealthV2.Repositories.Users
 {
-    public class ClinicController : IClinicsController
+    public class ClinicController : Controller, IClinicsController
     {
-
         private DoctorsContext _context;
-        private readonly HttpClient httpClient = new HttpClient();
-        public string ConvertDataToJson(string json)
-        {
-            return null;
-        }
 
-        public string getJsonFromEclipse()
-        {
-            throw new NotImplementedException();
-        }
+        private readonly HttpClient httpClient = new HttpClient();
 
         public void AddClinic(string json)
         {
@@ -84,6 +79,22 @@ namespace EhealthV2.Repositories.Users
                 Console.WriteLine($"Error: {ex.Message}");
                 return null;
             }
+        }
+
+        public List<Clinics> GetClinicsFromApi()
+        {
+            // Get Clinics From API
+            List<Clinics> List = ConvertJsonStringToList<Clinics>(GetJsonAsync().ToString());
+            return List;
+        }
+
+        // Function to convert JSON string to List<T>
+        static List<T> ConvertJsonStringToList<T>(string jsonString)
+        {
+            // Deserialize JSON string to List<T>
+            List<T> resultList = JsonConvert.DeserializeObject<List<T>>(jsonString);
+
+            return resultList;
         }
     }
 }

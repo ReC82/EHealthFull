@@ -1,0 +1,28 @@
+﻿@page
+@model EhealthV2.Models.Users.DoctorsViewModel
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <!-- Add other headers as needed -->
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var doctor in Model.DoctorsList)
+            {
+                <tr>
+                    <td>@doctor.FirstName</td>
+                    <!-- Add other columns as needed -->
+                </tr>
+            }
+        }
+        else
+        {
+            //Model == null
+        }
+    </tbody>
+
+</table>

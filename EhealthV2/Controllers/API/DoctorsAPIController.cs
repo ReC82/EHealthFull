@@ -31,11 +31,5 @@ namespace EHealth.Controllers.Api
             return Ok(doctors);
         }
 
-        [HttpGet("/api/Clinics")]
-        public string getClinic()
-        {
-            string test = _clidata.getJsonFromEclipse();
-            return test;
-        }
     }
 }

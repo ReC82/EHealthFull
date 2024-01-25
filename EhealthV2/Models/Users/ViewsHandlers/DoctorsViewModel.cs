@@ -2,9 +2,8 @@
 using EhealthV2.Repositories.Users;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using EhealthV2.Models.Users;
 
-namespace EhealthV2.Models.Users
+namespace EhealthV2.Models.Users.ViewsHandlers
 {
     public class DoctorsViewModel : PageModel
     {
@@ -12,7 +11,7 @@ namespace EhealthV2.Models.Users
         private IDoctorsController _docdata;
         public DoctorsViewModel(IDoctorsController docdata)
         {
-            _docdata = docdata; 
+            _docdata = docdata;
         }
         public List<Doctors> DoctorsList { get; set; }
 

@@ -11,7 +11,7 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddTransient<IDoctorsController, DoctorsController>();
 builder.Services.AddTransient<IClinicsController, ClinicController>();
-string MSSQL = "Server=(localdb)\\MSSQLLocalDB;Database=ehealth;Trusted_Connection=True;MultipleActiveResultSets=true";
+//string MSSQL = "Server=(localdb)\\MSSQLLocalDB;Database=ehealth;Trusted_Connection=True;MultipleActiveResultSets=true";
 string SQLITE = "Data Source=ehealth.db";
 builder.Services.AddDbContext<DoctorsContext>(options => options.UseSqlite(SQLITE));
 

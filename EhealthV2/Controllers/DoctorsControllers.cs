@@ -11,11 +11,26 @@ namespace EhealthV2.Controllers
         private IDoctorsController _docRepo;
         private IWebHostEnvironment _docEnv;
 
+
+
         public DoctorsControllers(IDoctorsController repository, IWebHostEnvironment environment)
         {
             _docRepo = repository;
             _docEnv = environment;
         }
+
+        /*public IActionResult ViewDoctorsList()
+        {
+            var doctors = _docRepo.DoctorsInitData();
+            var viewModel = new DoctorsViewModel(_docRepo)
+            {
+                DoctorsList = doctors
+            };
+
+            return View(viewModel);
+        }*/
+
+
         public IActionResult Index()
         {
             return View();

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\EhealthV2.props" />
+</Project>

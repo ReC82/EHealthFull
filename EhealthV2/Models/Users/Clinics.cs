@@ -1,9 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace EhealthV2.Models.Users
 {
     public class Clinics : WebUsers
     {
+
         [Key]
         public int clinicId { get; set; }
 
@@ -22,5 +24,11 @@ namespace EhealthV2.Models.Users
         public string clinicPhone { get; set; }
 
         public string clinicInami{ get; set; }
+
+
     }
+
 }
+
+
+

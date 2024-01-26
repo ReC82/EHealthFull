@@ -17,6 +17,8 @@ public class User {
 
 	private String password;
 	
+	private String usertype;
+	
 
 
 
@@ -29,11 +31,12 @@ public class User {
 
 
 
-	public User(int id, String username, String password) {
+	public User(int id, String username, String password, String usertype) {
 		super();
 		id = id;
 		username = username;
 		password  = password;
+		usertype = usertype;
 	}
 
 
@@ -42,6 +45,22 @@ public class User {
 
 	public int getId() {
 		return id;
+	}
+
+
+
+
+
+	public String getUsertype() {
+		return usertype;
+	}
+
+
+
+
+
+	public void setUsertype(String usertype) {
+		this.usertype = usertype;
 	}
 
 
@@ -90,8 +109,14 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + "]";
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", usertype=" + usertype + "]";
 	}
+
+
+
+
+
+	
 
 
 	

@@ -11,12 +11,12 @@ namespace EhealthV2.Models.Users.ViewsHandlers
             _clinicdata = clinicdata;
         }
         public List<Clinics> ClinicList { get; set; }
-        public async Task OnGet(string searchTerm)
+        public void OnGet(string searchTerm)
         {
             if (string.IsNullOrEmpty(searchTerm))
             {
                 // No search term provided, retrieve all clinics
-                //ClinicList = await _clinicdata.GetClinicsFromApi();
+                //ClinicList = _clinicdata.GetClinicsFromApi();
             }
             else
             {

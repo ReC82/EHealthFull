@@ -32,6 +32,8 @@ public class UserController {
 		return userList;
 	}
 	
+	
+	
 	@DeleteMapping("/deleteUser/{Id}")
 	public String deleteUser(@PathVariable int Id) {
 		User user = userRepo.findById(Id).get();
@@ -46,14 +48,14 @@ public class UserController {
 			return user;
 	}
 	
-	@GetMapping("/getUser")
-	public User getUser(@PathVariable int Id) {
+	@GetMapping("/getUser/{Id}")
+	public User getUserById(@PathVariable int Id) {
 		Optional<User> user = userRepo.findById(Id);
 		User selectedUser = user.get();
 		return selectedUser;
 	}
 	
-	
+
 	
 	
 	

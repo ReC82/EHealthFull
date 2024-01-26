@@ -15,17 +15,17 @@ namespace EhealthV2.Models.Users
 
         public string Email { get; set; }
 
-        //public string Address { get; set; }
+        public string Address { get; set; }
 
-        //public string City { get; set; }
+        public string City { get; set; }
 
-        //public string PostCode { get; set; }
+        public string PostCode { get; set; }
 
-        //public string Inami { get; set; }
+        public string Inami { get; set; }
 
-        //public string Speciality { get; set; }
+        public string Speciality { get; set; }
 
-        //public string Organisation { get; set; }
+        public string Organisation { get; set; }
 
     }
 

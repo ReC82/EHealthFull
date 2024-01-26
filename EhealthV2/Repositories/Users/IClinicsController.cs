@@ -8,7 +8,7 @@ namespace EhealthV2.Repositories.Users
 
         void AddClinic(string json);
 
-        public List<Clinics> GetClinicsFromApi();
+        public Task<List<Clinics>> GetClinicsFromApiAsync();
 
         List<Clinics> SearchClinics(string searchTerm);
 

@@ -84,12 +84,14 @@ namespace EhealthV2.Repositories.Users
             }
         }
 
-        public List<Clinics> GetClinicsFromApi()
+        public async Task<List<Clinics>> GetClinicsFromApiAsync()
         {
             // Get Clinics From API
-            List<Clinics> List = ConvertJsonStringToList<Clinics>(GetJsonAsync().ToString());
-            return List;
+            string jsonResponse = await GetJsonAsync();
+            List<Clinics> clinicsList = ConvertJsonStringToList<Clinics>(jsonResponse);
+            return clinicsList;
         }
+
 
         // Function to convert JSON string to List<T>
         static List<T> ConvertJsonStringToList<T>(string jsonString)

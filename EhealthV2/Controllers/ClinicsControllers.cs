@@ -9,6 +9,7 @@ namespace EhealthV2.Controllers
     {
         private IClinicsController _clinicRepo;
         private IWebHostEnvironment _clinicEnv;
+
         public ClinicsControllers(IClinicsController repository, IWebHostEnvironment environment)
         {
             _clinicRepo = repository;
@@ -33,5 +34,9 @@ namespace EhealthV2.Controllers
             }
             return RedirectToPage("/Index");
         }
+
+
+
+
     }
 }

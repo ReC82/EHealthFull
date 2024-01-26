@@ -31,7 +31,7 @@ public class ClinicController {
 		clinicRepo.save(clinic);
 		return clinic;
 	}
-	
+	//All the clinics
 	@GetMapping("/getClinics")
 	public List<Clinic> getAllClinics()
 	{
@@ -53,6 +53,7 @@ public class ClinicController {
 			return clinic;
 	}
 	
+	//get clinic by id
 	@GetMapping("/getClinic")
 	public Clinic getClinic(@PathVariable int Id) {
 		Optional<Clinic> clinic = clinicRepo.findById(Id);

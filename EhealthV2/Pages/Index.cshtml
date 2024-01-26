@@ -1,12 +1,119 @@
-﻿@page
+@page
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <p>Click Here to add Doctor: <a asp-page="/Signup/DoctorsSignup">Click Here</a></p>
-    <p>Click Here to add Clinic: <a asp-page="/Signup/ClinicsSignup">Click Here</a></p>
-    <p>Click Here to view Doctors: <a asp-page="/Lists/viewDoctorsList">Click Here</a></p>
-    <p>Click Here to view Clinics: <a asp-page="/Lists/viewClinicsList">Click Here</a></p>
-</div>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Page d'Index</title>
+</head>
+<style>
+    .cont {
+        display: flex;
+        justify-content: center;
+    }
+
+   .block{
+        transition: transform 0.3s ease-in-out;
+        padding:60px;
+        border-right: solid #F8C471 2px;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+    }
+
+    .block:hover {
+        transform: scale(1.05);
+    }
+
+    .medecin {
+        background-color: #283747;
+    }
+
+    .patient {
+        background-color: #283747;
+    }
+
+    .clinique {
+        background-color: #283747;
+    }
+
+    h2 {
+        color: #FFF;
+    }
+    .jetecontiens{
+        margin-top:30px;
+        color: #FFF;
+        background-color: #FFF;
+    }
+     .titre{
+        background-color: #283747;
+        padding: 30px;
+        color: #FFF;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+</style>
+
+<body>
+    <div class="titre">
+
+        <h1>E-Health</h1>
+        <p>Simplifiez votre parcours de santé avec l'application E-Health. Inscrivez-vous dès maintenant et prenez le contrôle de votre bien-être.</p>
+
+    </div>
+   
+   
+    <div class="jetecontiens">
+        <div class="cont medecin">
+            <div class="block medecin">
+                <h2>Médecin</h2>
+                <p>Cliquez ici pour vous inscrire en tant que médecin.</p>
+                
+                <button style="background-color: #F8C471; /* Couleur de fond verte */
+                    color: white; /* Couleur du texte blanc */
+                    padding: 10px 20px; /* Espacement intérieur du bouton */
+                    border: none; /* Supprime la bordure par défaut */
+                    border-radius: 5px; /* Coins arrondis */
+                    cursor: pointer; /* Curseur de la souris */
+                    font-size: 16px; /* Taille de la police */">
+                    <a style="text-decoration: none; color: #FFF;" asp-page="/Signup/DoctorsSignup">Inscription</a>
+                </button>
+            </div>
+
+            <div class="block patient">
+                <h2>Patient</h2>
+                <p>Cliquez ici pour vous inscrire en tant que patient.</p>
+                
+                <button style="background-color: #F8C471; /* Couleur de fond verte */
+                    color: white; /* Couleur du texte blanc */
+                    padding: 10px 20px; /* Espacement intérieur du bouton */
+                    border: none; /* Supprime la bordure par défaut */
+                    border-radius: 5px; /* Coins arrondis */
+                    cursor: pointer; /* Curseur de la souris */
+                    font-size: 16px; /* Taille de la police */">
+                    <a style="text-decoration: none; color: #FFF;" asp-page="/Signup/Patient">Inscription</a>
+                </button>
+            </div>
+
+            <div class="block clinique">
+                <h2>Clinique</h2>
+                <p>Cliquez ici pour inscrire votre clinique.</p>
+                <button style="background-color: #F8C471; /* Couleur de fond verte */
+                    color: white; /* Couleur du texte blanc */
+                    padding: 10px 20px; /* Espacement intérieur du bouton */
+                    border: none; /* Supprime la bordure par défaut */
+                    border-radius: 5px; /* Coins arrondis */
+                    cursor: pointer; /* Curseur de la souris */
+                    font-size: 16px; /* Taille de la police */">
+                    <a style="text-decoration: none; color: #FFF;" asp-page="/Signup/ClinicsSignup">Inscription</a>
+                </button>
+               
+            </div>
+        </div>
+
+    </div>
+   
+
+</body>
+</html>

@@ -10,6 +10,8 @@ namespace EhealthV2.Repositories.Users
 
         public List<Clinics> GetClinicsFromApi();
 
+        List<Clinics> SearchClinics(string searchTerm);
+
     }
 
 

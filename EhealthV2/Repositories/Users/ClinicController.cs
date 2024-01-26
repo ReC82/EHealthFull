@@ -6,6 +6,7 @@ using System.Text.Json;
 using Newtonsoft.Json;
 using Bogus;
 using EhealthV2.Controllers;
+using System.Net.Http;
 
 namespace EhealthV2.Repositories.Users
 {
@@ -13,22 +14,23 @@ namespace EhealthV2.Repositories.Users
     {
         private DoctorsContext _context;
 
-        private readonly HttpClient httpClient = new HttpClient();
+        private HttpClient _httpClient = new HttpClient();
+        public List<Clinics> ClinicsList { get; set; }
 
         public void AddClinic(string json)
         {
-            PostDataToEclipseAsync(json);
+            string PostClinicApiUrl = "http://localhost:8080/saveClinic";
+            PostDataToEclipseAsync(json, PostClinicApiUrl);
+            //ClinicsList = GetClinicsFromApi();
         }
 
-        public async Task<string> PostDataToEclipseAsync(string json)
+        public async Task<string> PostDataToEclipseAsync(string json, string apiUrl)
         {
             // Define the API endpoint for posting data
-            string apiUrl = "http://localhost:8080/saveClinic";
-
             try
             {
                 // Send a POST request with JSON data
-                HttpResponseMessage response = await httpClient.PostAsync(apiUrl, new StringContent(json, Encoding.UTF8, "application/json"));
+                HttpResponseMessage response = await _httpClient.PostAsync(apiUrl, new StringContent(json, Encoding.UTF8, "application/json"));
 
                 // Ensure the response is successful
                 response.EnsureSuccessStatusCode();
@@ -49,9 +51,10 @@ namespace EhealthV2.Repositories.Users
                 return null;
             }
         }
+
         public void Dispose()
         {
-            httpClient.Dispose();
+            _httpClient.Dispose();
         }
 
         public async Task<string> GetJsonAsync()
@@ -62,7 +65,7 @@ namespace EhealthV2.Repositories.Users
             try
             {
                 // SEND A GET TO OBTAIN A JSON
-                HttpResponseMessage response = await httpClient.GetAsync(apiUrl);
+                HttpResponseMessage response = await _httpClient.GetAsync(apiUrl);
 
                 // VERIFY THE STATUS
                 response.EnsureSuccessStatusCode();
@@ -95,6 +98,11 @@ namespace EhealthV2.Repositories.Users
             List<T> resultList = JsonConvert.DeserializeObject<List<T>>(jsonString);
 
             return resultList;
+        }
+
+        public List<Clinics> SearchClinics(string searchTerm)
+        {
+            return null;
         }
     }
 }

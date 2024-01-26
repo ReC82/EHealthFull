@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -49,13 +51,24 @@ public class UserController {
 	}
 	
 	@GetMapping("/getUser/{Id}")
-	public User getUserById(@PathVariable int Id) {
+	public User getUser(@PathVariable int Id) {
 		Optional<User> user = userRepo.findById(Id);
 		User selectedUser = user.get();
 		return selectedUser;
 	}
 	
 
+	@GetMapping("/getMyUser/{username}")
+	public ResponseEntity<User> getUserByUsername(@PathVariable String username) {
+	    Optional<User> user = userRepo.findByUsername(username);
+
+	    if (user.isPresent()) {
+	        User selectedUser = user.get();
+	        return new ResponseEntity<>(selectedUser, HttpStatus.OK);
+	    } else {
+	        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	    }
+	}
 	
 	
 	

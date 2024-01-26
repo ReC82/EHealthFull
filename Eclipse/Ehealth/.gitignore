@@ -32,3 +32,8 @@ build/
 ### VS Code ###
 .vscode/
 .mvn/
+
+### jeanpierre ###
+.DS_Store
+src/main/resources/application.properties
+

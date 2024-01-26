@@ -12,5 +12,7 @@ namespace EhealthV2.Repositories.Users
         List<Doctors> DoctorsInitData();
 
         //public List<Doctors> GetDoctors();
+
+        List<Doctors> SearchDoctors(string searchTerm);
     }
 }

@@ -15,7 +15,7 @@ namespace EhealthV2.Models.Users.ViewsHandlers
         }
         public List<Doctors> DoctorsList { get; set; }
 
-        public void OnGet(string searchTerm)
+        public void OnGet(string searchTerm) // Used for the default View too
         {
             if (string.IsNullOrEmpty(searchTerm))
             {
@@ -25,7 +25,7 @@ namespace EhealthV2.Models.Users.ViewsHandlers
             else
             {
                 // Use the search term to filter clinics
-                DoctorsList = _docdata.DoctorsInitData();
+                DoctorsList = _docdata.SearchDoctors(searchTerm);
             }
         }
 

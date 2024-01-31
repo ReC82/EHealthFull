@@ -31,14 +31,13 @@ public class User {
 
 
 
-	public User(int id, String username, String password, String usertype) {
+	public User(int uid, String un, String pwd, String ut) {
 		super();
-		id = id;
-		username = username;
-		password  = password;
-		usertype = usertype;
+		id = uid;
+		username = un;
+		password  = pwd;
+		usertype = ut;
 	}
-
 
 
 

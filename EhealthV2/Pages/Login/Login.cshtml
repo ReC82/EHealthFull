@@ -1,5 +1,5 @@
 ﻿@page "/Login/Login"
-@model EHealth.Pages.Login.LoginModel
+@model EhealthV2.Models.Users.ViewsHandlers.LoginViewModel
 @{
 }
 
@@ -11,8 +11,7 @@
 </head>
 <body class="text-center">
     <div class="container">
-        <form method="post" class="form-signin" asp-page-handler="Login" id="loginForm">
-            <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <form method="post" class="form-signin" asp-controller="LoginControllers" asp-action="LoginUser" id="loginForm">
             <h1 class="h3 mb-3 font-weight-normal">Login</h1>
 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>

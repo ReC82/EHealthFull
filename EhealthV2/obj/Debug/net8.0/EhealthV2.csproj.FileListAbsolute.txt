@@ -261,3 +261,4 @@ E:\Devops\EHealthFinal\EhealthV2\obj\Debug\net8.0\EhealthV2.pdb
 E:\Devops\EHealthFinal\EhealthV2\obj\Debug\net8.0\EhealthV2.genruntimeconfig.cache
 E:\Devops\EHealthFinal\EhealthV2\obj\Debug\net8.0\ref\EhealthV2.dll
 E:\Devops\EHealthFinal\EhealthV2\bin\Debug\net8.0\Newtonsoft.Json.dll
+E:\Devops\EHealthFinal\EhealthV2\bin\Debug\net8.0\DHTMLX.dll

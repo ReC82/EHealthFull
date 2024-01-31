@@ -2,6 +2,7 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+    bool cookieExists = HttpContext.Request.Cookies.ContainsKey("LoggedAccount");
 }
 
 <!DOCTYPE html>
@@ -55,65 +56,71 @@
     }
 </style>
 
-<body>
-    <div class="titre">
+@if (!cookieExists)
+{
+    <body>
+        <div class="titre">
 
-        <h1>E-Health</h1>
-        <p>Simplifiez votre parcours de santé avec l'application E-Health. Inscrivez-vous dès maintenant et prenez le contrôle de votre bien-être.</p>
+            <h1>E-Health</h1>
+            <p>Simplifiez votre parcours de santé avec l'application E-Health. Inscrivez-vous dès maintenant et prenez le contrôle de votre bien-être.</p>
 
-    </div>
-   
-   
-    <div class="jetecontiens">
-        <div class="cont medecin">
-            <div class="block medecin">
-                <h2>Médecin</h2>
-                <p>Cliquez ici pour vous inscrire en tant que médecin.</p>
-                
-                <button style="background-color: #F8C471; /* Couleur de fond verte */
-                    color: white; /* Couleur du texte blanc */
-                    padding: 10px 20px; /* Espacement intérieur du bouton */
-                    border: none; /* Supprime la bordure par défaut */
-                    border-radius: 5px; /* Coins arrondis */
-                    cursor: pointer; /* Curseur de la souris */
-                    font-size: 16px; /* Taille de la police */">
-                    <a style="text-decoration: none; color: #FFF;" asp-page="/Signup/DoctorsSignup">Inscription</a>
-                </button>
-            </div>
-
-            <div class="block patient">
-                <h2>Patient</h2>
-                <p>Cliquez ici pour vous inscrire en tant que patient.</p>
-                
-                <button style="background-color: #F8C471; /* Couleur de fond verte */
-                    color: white; /* Couleur du texte blanc */
-                    padding: 10px 20px; /* Espacement intérieur du bouton */
-                    border: none; /* Supprime la bordure par défaut */
-                    border-radius: 5px; /* Coins arrondis */
-                    cursor: pointer; /* Curseur de la souris */
-                    font-size: 16px; /* Taille de la police */">
-                    <a style="text-decoration: none; color: #FFF;" asp-page="/Signup/Patient">Inscription</a>
-                </button>
-            </div>
-
-            <div class="block clinique">
-                <h2>Clinique</h2>
-                <p>Cliquez ici pour inscrire votre clinique.</p>
-                <button style="background-color: #F8C471; /* Couleur de fond verte */
-                    color: white; /* Couleur du texte blanc */
-                    padding: 10px 20px; /* Espacement intérieur du bouton */
-                    border: none; /* Supprime la bordure par défaut */
-                    border-radius: 5px; /* Coins arrondis */
-                    cursor: pointer; /* Curseur de la souris */
-                    font-size: 16px; /* Taille de la police */">
-                    <a style="text-decoration: none; color: #FFF;" asp-page="/Signup/ClinicsSignup">Inscription</a>
-                </button>
-               
-            </div>
         </div>
 
-    </div>
-   
 
-</body>
+        <div class="jetecontiens">
+            <div class="cont medecin">
+                <div class="block medecin">
+                    <h2>Médecin</h2>
+                    <p>Cliquez ici pour vous inscrire en tant que médecin.</p>
+
+                    <button style="background-color: #F8C471; /* Couleur de fond verte */
+                    color: white; /* Couleur du texte blanc */
+                    padding: 10px 20px; /* Espacement intérieur du bouton */
+                    border: none; /* Supprime la bordure par défaut */
+                    border-radius: 5px; /* Coins arrondis */
+                    cursor: pointer; /* Curseur de la souris */
+                    font-size: 16px; /* Taille de la police */">
+                        <a style="text-decoration: none; color: #FFF;" asp-page="/Signup/DoctorsSignup">Inscription</a>
+                    </button>
+                </div>
+
+                <div class="block patient">
+                    <h2>Patient</h2>
+                    <p>Cliquez ici pour vous inscrire en tant que patient.</p>
+
+                    <button style="background-color: #F8C471; /* Couleur de fond verte */
+                    color: white; /* Couleur du texte blanc */
+                    padding: 10px 20px; /* Espacement intérieur du bouton */
+                    border: none; /* Supprime la bordure par défaut */
+                    border-radius: 5px; /* Coins arrondis */
+                    cursor: pointer; /* Curseur de la souris */
+                    font-size: 16px; /* Taille de la police */">
+                        <a style="text-decoration: none; color: #FFF;" asp-page="/Signup/Patient">Inscription</a>
+                    </button>
+                </div>
+
+                <div class="block clinique">
+                    <h2>Clinique</h2>
+                    <p>Cliquez ici pour inscrire votre clinique.</p>
+                    <button style="background-color: #F8C471; /* Couleur de fond verte */
+                    color: white; /* Couleur du texte blanc */
+                    padding: 10px 20px; /* Espacement intérieur du bouton */
+                    border: none; /* Supprime la bordure par défaut */
+                    border-radius: 5px; /* Coins arrondis */
+                    cursor: pointer; /* Curseur de la souris */
+                    font-size: 16px; /* Taille de la police */">
+                        <a style="text-decoration: none; color: #FFF;" asp-page="/Signup/ClinicsSignup">Inscription</a>
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+
+    </body>
+}
+else
+{
+    <p>You Are Connected</p>
+}
 </html>

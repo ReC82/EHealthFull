@@ -2,7 +2,7 @@
 
 namespace EhealthV2.Data
 {
-    public class WebUsersContext :DbContext
+    public class WebUsersContext
     {
 
 

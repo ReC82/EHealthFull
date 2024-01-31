@@ -1,5 +1,6 @@
 using EhealthV2.Data;
 using EhealthV2.Repositories.Users;
+using EhealthV2.Repositories.Login;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Sqlite;
 using Microsoft.Extensions.Configuration;
@@ -10,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 
 builder.Services.AddTransient<IDoctorsController, DoctorsController>();
+builder.Services.AddTransient<ILoginController, LoginController>();
 builder.Services.AddTransient<IClinicsController, ClinicController>();
 //string MSSQL = "Server=(localdb)\\MSSQLLocalDB;Database=ehealth;Trusted_Connection=True;MultipleActiveResultSets=true";
 string SQLITE = "Data Source=ehealth.db";

@@ -24,7 +24,7 @@ namespace EhealthV2.Repositories.Login
         public async Task<string> GetUsersAsync(string username)
         {
             // DEFINE API URL
-            string apiUrl = "http://localhost:8080/GetUser/${username}";
+            string apiUrl = "http://localhost:8080/getMyUser/" + username;
 
             try
             {

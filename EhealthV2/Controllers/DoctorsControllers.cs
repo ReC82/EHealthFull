@@ -9,27 +9,15 @@ namespace EhealthV2.Controllers
     public class DoctorsControllers : Controller
     {
         private IDoctorsController _docRepo;
-        private IWebHostEnvironment _docEnv;
+        //private IWebHostEnvironment _docEnv;
 
 
 
         public DoctorsControllers(IDoctorsController repository, IWebHostEnvironment environment)
         {
             _docRepo = repository;
-            _docEnv = environment;
+            //_docEnv = environment;
         }
-
-        /*public IActionResult ViewDoctorsList()
-        {
-            var doctors = _docRepo.DoctorsInitData();
-            var viewModel = new DoctorsViewModel(_docRepo)
-            {
-                DoctorsList = doctors
-            };
-
-            return View(viewModel);
-        }*/
-
 
         public IActionResult Index()
         {
@@ -42,6 +30,7 @@ namespace EhealthV2.Controllers
             if (ModelState.IsValid)
             {
                 _docRepo.AddDoctor(doctor);
+  
                 return View("Pages/Signup/SignupConfirmation.cshtml");
             }
             return RedirectToPage("/Index");

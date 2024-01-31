@@ -2,6 +2,7 @@
 using EhealthV2.Models.Users;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 using System.Net.Http;
 using System.Numerics;
 
@@ -15,12 +16,20 @@ namespace EhealthV2.Repositories.Users
         public DoctorsController(DoctorsContext context)
         {
             _context = context;
-            DoctorsList = DoctorsInitData();
+            //*DoctorsList = DoctorsInitData();
         }
         public void AddDoctor(Doctors Doctor)
         {
             // EXECUTE ADD FUNCTION
-            _context.Add(Doctor);
+            try
+            {
+                _context.Add(Doctor);
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
 
         public List<Doctors> DoctorsInitData()

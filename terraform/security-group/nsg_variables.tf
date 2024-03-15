@@ -3,7 +3,7 @@
 # SUBNETS : NAMES, IP_RANGES (10.0.1-2-3 / 24)
 
 
-# Variable for azurerm_network_security_group
+# Variable for resource_group
 variable "rg_ehealth_name" {
     type        = string
     default     = ""
@@ -16,6 +16,7 @@ variable "rg_ehealth_location" {
     description = "RG location in Azure"
 }
 
+# Variable for network_security_group
 variable "nsg1_ehealth_name" {
     type        = string
     default     = ""
@@ -34,10 +35,19 @@ variable "nsg3_ehealth_name" {
     description = "NSG 3 Ehealth in Azure"
 }
 
+# Variable for network_interface
 variable "network_interface_name" {
     type        = string
     default     = ""
     description = "Network interface name Ehealth in Azure"
+}
+
+
+# Variable environement
+variable "rg_ehealth_environment" {
+    type = string
+    default = ""
+    description = "Environment name for resource group Eahlth"
 }
 
 

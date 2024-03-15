@@ -8,7 +8,7 @@ resource "azurerm_resource_group" "rg_ehealth"{
     location = var.rg_ehealth_location
 
     tags = {
-        environment = "production"
+        environment = var.rg_ehealth_environment
     }
 }
 
@@ -30,7 +30,7 @@ resource "azurerm_network_security_group" "nsg1_app_ehealth" {
   }
 
   tags = {
-    environment = "production"
+    environment = var.rg_ehealth_environment
   }
 }
 
@@ -53,7 +53,7 @@ resource "azurerm_network_security_group" "nsg2_api_ehealth" {
   }
 
   tags = {
-    environment = "production"
+    environment = var.rg_ehealth_environment
   }
 }
 
@@ -75,7 +75,7 @@ resource "azurerm_network_security_group" "nsg3_db_ehealth" {
   }
 
   tags = {
-    environment = "production"
+    environment = var.rg_ehealth_environment
   }
 }
 
@@ -87,13 +87,13 @@ resource "azurerm_network_interface" "app-nic" {
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     = azurerm_subnet.subnet.id
+    subnet_id                     = azurerm_subnet.subnet_id.id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.public_ip.id
   }
 
   tags = {
-    environment = "production"
+    environment = var.rg_ehealth_environment
   }
 }
 

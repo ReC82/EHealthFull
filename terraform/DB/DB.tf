@@ -8,7 +8,7 @@
 
 resource "azurerm_linux_virtual_machine" "ehealth_db_srv" {
   name                            = var.db_srv_name
-  location                        = azurerm_resource_group.rg_linux.location
+  location                        = "bidoncity"
   network_interface_ids           = [azurerm_network_interface.netint_db_linux.id]
   admin_username                  = var.db_root_user
   disable_password_authentication = false

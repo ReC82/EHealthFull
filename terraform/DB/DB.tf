@@ -36,10 +36,31 @@ resource "azurerm_linux_virtual_machine" "ehealth_db_srv" {
   }
 
   boot_diagnostics {
-    storage_account_uri = var.db_storage_account
+    storage_account_uri = azurerm_storage_account
   }
 
   tags = var.db_tags
 
-  depends_on = [azurerm_resource_group.rg_ehealth, azurerm_network_interface.nic_db, azurerm_storage_account.storacc_db_linux]
+  //depends_on = [azurerm_resource_group.rg_ehealth, azurerm_network_interface.nic_db, azurerm_storage_account.storacc_db_linux]
+}
+
+####################
+# Web Storage Account
+####################
+resource "azurerm_storage_account" "storacc_linux" {
+  name                     = "diag${random_id.randomId.hex}"
+  location                 = azurerm_resource_group.rg_linux.location
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
+  resource_group_name      = azurerm_resource_group.rg_linux.name
+  tags = {
+    env = "prod"
+  }
+}
+
+resource "random_id" "randomId" {
+  keepers = {
+    resource_group = azurerm_resource_group.rg_linux.name
+  }
+  byte_length = 8
 }

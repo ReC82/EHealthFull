@@ -1,5 +1,5 @@
 # Variable for resource_group
-rg_ehealth_name = "rg_ehealth"
+rg_ehealth_name     = "rg_ehealth"
 rg_ehealth_location = "Central US"
 
 # Variable for network security group

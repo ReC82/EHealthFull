@@ -4,8 +4,8 @@
 
 
 resource "azurerm_resource_group" "rg_ehealth"{
-    name = var.resource_groupe_name_rg_ehealth
-    location = var.resource_group_location_rg_ehealth
+    name = var.rg_ehealth_name
+    location = var.rg_ehealth_location
 
     tags = {
         environment = "production"
@@ -14,7 +14,7 @@ resource "azurerm_resource_group" "rg_ehealth"{
 
 # Create Network Security Group and rule nsg1_ehealth
 resource "azurerm_network_security_group" "nsg1_ehealth" {
-  name                = var.network_security_group_name
+  name                = var.nsg1_ehealth_name
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 
@@ -38,7 +38,7 @@ resource "azurerm_network_security_group" "nsg1_ehealth" {
 
 # Create Network Security Group and rule nsg2_ehealth
 resource "azurerm_network_security_group" "nsg2_ehealth" {
-  name                = var.network_security_group_name
+  name                = var.nsg2_ehealth_name
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 
@@ -61,7 +61,7 @@ resource "azurerm_network_security_group" "nsg2_ehealth" {
 
 # Create Network Security Group and rule nsg3_ehealth
 resource "azurerm_network_security_group" "nsg3_ehealth" {
-  name                = var.network_security_group_name
+  name                = var.nsg3_ehealth_name
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 

@@ -12,12 +12,14 @@ module "vnet" {
 }*/
 
 module "db" {
-  source          = "./module_vnet"
-  rg_name         = var.ehealth_rg_name
-  vnet_ip_range   = var.ehealth_vnet_ip_range
-  subnet_prefixes = var.ehealth_subnets
-  subnet_names    = var.ehealth_subnets_names
-
+  source          = "./DB"
+  db_pass = var.db_pass
+  db_root_user = var.db_root_user
+  db_disk_caching = var.db_disk_caching
+  db_location = var.db_location
+  db_nic_id = var.db_nic_id
+  db_rg_group_name = var.db_rg_group_name
+  db_storage_account = var.db_storage_account
 }
 /*
 module "secgroup" {

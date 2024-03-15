@@ -8,27 +8,27 @@
 
 resource "azurerm_linux_virtual_machine" "ehealth_db_srv" {
   name                            = var.db_srv_name
-  location                        = "bidoncity"
-  network_interface_ids           = [azurerm_network_interface.netint_db_linux.id]
+  location                        = var.db_location
+  network_interface_ids           = var.db_nic_id
   admin_username                  = var.db_root_user
-  disable_password_authentication = false
+  disable_password_authentication = var.dis_pwd_auth
   admin_password = var.db_pass
-  resource_group_name             = azurerm_resource_group.rg_linux.name
+  resource_group_name             = var.db_rg_group_name
   size                            = var.db_srv_size
   os_disk {
     name                 = var.db_srv_disk_name
-    caching              = "ReadWrite"
+    caching              = var.db_disk.caching
     storage_account_type = var.db_srv_disk_storage_account_type
   }
 
   source_image_reference {
-    publisher = "Canonical"
+    publisher = var.db_src_img_ref_publisher
     offer     = var.db_srv_distrib
     sku       = var.db_srv_distrib_sku
     version   = var.db_srv_distrib_version
   }
 
-  computer_name = "EHEALTH-PROD-DB"
+  computer_name = var.db_srv_name
 
   admin_ssh_key {
     username   = var.db_root_user
@@ -36,10 +36,10 @@ resource "azurerm_linux_virtual_machine" "ehealth_db_srv" {
   }
 
   boot_diagnostics {
-    storage_account_uri = azurerm_storage_account.storacc_db_linux.primary_blob_endpoint
+    storage_account_uri = var.db_storage_account
   }
 
-  tags = {
-    env = "prod"
-  }
+  tags = var.db_tags
+
+  depends_on = [azurerm_resource_group.rg_ehealth, azurerm_network_interface.nic_db, azurerm_storage_account.storacc_db_linux]
 }

@@ -36,3 +36,42 @@ variable "db_srv_distrib_sku" {
 variable "db_srv_distrib_version" {
     default = "latest"
 }
+
+variable db_location {
+    description = "location"
+}
+
+variable "db_nic_id" {
+    type = list(string)
+    description = "NIC ID"
+}
+
+variable "db_rg_group_name" {
+    description = "Resource Group Name"
+}
+
+variable "dis_pwd_auth" {
+    description = "Disable password authentication (default : false)"
+    default = false
+}
+
+variable "db_disk_caching" {
+    description = "Define type of disk access (default : ReadWrite)"
+    default = "ReadWrite"
+}
+
+variable db_src_img_ref_publisher {
+    description = "publisher of the image used"
+    default = "Canonical"
+}
+
+variable "db_storage_account" {
+    default = azurerm_storage_account.storacc_db_linux.primary_blob_endpoint
+}
+
+variable "db_tags" {
+    type = map(string)
+    default = {
+      "env" = "prod"
+    }
+}

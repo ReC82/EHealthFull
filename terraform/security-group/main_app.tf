@@ -99,8 +99,8 @@ resource "azurerm_network_interface" "app-nic" {
 
 # Connect the security group to the network interface
 resource "azurerm_network_interface_security_group_association" "association" {
-  network_interface_id      = azurerm_network_interface.nic.id
-  network_security_group_id = azurerm_network_security_group.nsg.id
+  network_interface_id      = azurerm_network_interface.app-nic.id
+  network_security_group_id = azurerm_network_security_group.nsg1_app_ehealth.id
 }
 
 

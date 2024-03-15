@@ -13,13 +13,13 @@ resource "azurerm_resource_group" "rg_ehealth"{
 }
 
 # Create Network Security Group and rule nsg1_ehealth
-resource "azurerm_network_security_group" "nsg1_ehealth" {
+resource "azurerm_network_security_group" "nsg1_app_ehealth" {
   name                = var.nsg1_ehealth_name
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 
   security_rule {
-    name                       = "HTTP"
+    name                       = "app-HTTP"
     priority                   = 1001
     direction                  = "Inbound"
     access                     = "Allow"
@@ -27,7 +27,6 @@ resource "azurerm_network_security_group" "nsg1_ehealth" {
     source_port_range          = "*"
     destination_port_range     = "80"
     source_address_prefix      = "*"
-    destination_address_prefix = "10.0.1.0/24"
   }
 
   tags = {
@@ -37,21 +36,20 @@ resource "azurerm_network_security_group" "nsg1_ehealth" {
 
 
 # Create Network Security Group and rule nsg2_ehealth
-resource "azurerm_network_security_group" "nsg2_ehealth" {
+resource "azurerm_network_security_group" "nsg2_api_ehealth" {
   name                = var.nsg2_ehealth_name
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 
   security_rule {
-    name                       = "HTTP"
+    name                       = "api-HTTP"
     priority                   = 1001
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "80"
-    source_address_prefix      = "10.0.1.0/24"
-    destination_address_prefix = "10.0.2.0/24"
+    source_address_prefix      = "10.0.1.100/32"
   }
 
   tags = {
@@ -60,21 +58,20 @@ resource "azurerm_network_security_group" "nsg2_ehealth" {
 }
 
 # Create Network Security Group and rule nsg3_ehealth
-resource "azurerm_network_security_group" "nsg3_ehealth" {
+resource "azurerm_network_security_group" "nsg3_db_ehealth" {
   name                = var.nsg3_ehealth_name
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 
   security_rule {
-    name                       = "HTTP"
+    name                       = "db-HTTP"
     priority                   = 1001
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "3306"
-    source_address_prefix      = "10.0.2.0/24"
-    destination_address_prefix = "10.0.3.0/24"
+    source_address_prefix      = "10.0.2.150/32"
   }
 
   tags = {
@@ -83,7 +80,7 @@ resource "azurerm_network_security_group" "nsg3_ehealth" {
 }
 
 # Create network interface
-resource "azurerm_network_interface" "nic" {
+resource "azurerm_network_interface" "app-nic" {
   name                = var.network_interface_name
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name

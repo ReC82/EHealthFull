@@ -3,10 +3,14 @@
 # SUBNETS : NAMES, IP_RANGES (10.0.1-2-3 / 24)
 
 variable "app_location" {
-    default = "centralus"
+  default = "centralus"
 }
 
 variable "resource_group_name" {
   description = "Name of the Azure resource group"
   default     = "app-grp"
+}
+
+variable "ehealth_rg_name" {
+  description = "Resource group name"
 }

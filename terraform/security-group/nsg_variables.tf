@@ -42,6 +42,7 @@ variable "network_interface_name" {
     description = "Network interface name Ehealth in Azure"
 }
 
+<<<<<<< HEAD
 # Variable environement
 variable "nsg_tags" {
     type = map(string)
@@ -49,6 +50,14 @@ variable "nsg_tags" {
       "env" = "prod"
     }
      description = "Environment name for resource group Eahlth"
+=======
+
+# Variable environment
+variable "rg_ehealth_environment" {
+    type = string
+    default = ""
+    description = "Environment name for resource group Eahlth"
+>>>>>>> 8b804a8 (modify comment)
 }
 
 

@@ -11,6 +11,7 @@ module "vnet" {
 
 }*/
 
+<<<<<<< HEAD
 resource "azurerm_resource_group" "rg_ehealth" {
   name = var.db_rg_group_name
   location = var.app_location
@@ -25,14 +26,25 @@ module "db" {
   db_nic_id          = var.db_nic_id
   db_rg_group_name   = var.db_rg_group_name
   //db_storage_account = var.db_storage_account
+=======
+module "db" {
+  source          = "./module_vnet"
+  rg_name         = var.ehealth_rg_name
+  vnet_ip_range   = var.ehealth_vnet_ip_range
+  subnet_prefixes = var.ehealth_subnets
+  subnet_names    = var.ehealth_subnets_names
+>>>>>>> 570d26b (add variable in module secgroup)
 }
-/*
-module "secgroup" {
-  source              = "github.com/ReC82/Terraform/tree/main/azure/lab04/module_vnet"
-  rg_name             = azurerm_resource_group.rg.name
-  address_space_lab04 = ["10.0.0.0/16"]
-  subnet_prefix_lab04 = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
-  subnet_names_lab04  = ["sub1", "sub2", "sub3"]
 
+module "secgroup" {
+  source              = "./security-group"
+  rg_name             = var.ehealth_rg_name
+  
+  # Variable for network security group
+  nsg1_ehealth_name = var.nsg1_app_ehealth
+  nsg2_ehealth_name = var.nsg2_api_ehealth
+  nsg3_ehealth_name = var.nsg3_db_ehealth  
+  
+  # Variable environment
+  rg_ehealth_environment = var.rg_ehealth_environment
 }
-*/

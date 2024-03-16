@@ -37,14 +37,17 @@ module "db" {
 }
 
 module "secgroup" {
-  source              = "./security-group"
-  rg_name             = var.ehealth_rg_name
+    source              = "./security-group"
+
+     # Variable for Resource Group
+    nsg_rg_group_name   = var.nsg_rg_group_name
+    nsg_rg_location     = var.nsg_rg_location
   
-  # Variable for network security group
-  nsg1_ehealth_name = var.nsg1_app_ehealth
-  nsg2_ehealth_name = var.nsg2_api_ehealth
-  nsg3_ehealth_name = var.nsg3_db_ehealth  
+    # Variable for Network Security Group
+    nsg_app_name        = var.nsg_app
+    nsg_api_name        = var.nsg_api
+    nsg_db_name         = var.nsg_db  
   
-  # Variable environment
-  rg_ehealth_environment = var.rg_ehealth_environment
+    # Variable Environment
+    nsg_tags            = var.nsg_tags
 }

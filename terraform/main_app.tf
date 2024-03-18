@@ -59,6 +59,22 @@ module "main_app_web_server" {
   iis_admin_password = var.iis_admin_password
 }
 
+###############
+# MODULE : API
+###############
+module "main_app_api" {
+
+  source = "./Module_API_Server"
+
+  app_ressource_group_name = var.app_ressource_group_name
+  app_location             = var.app_location
+
+  api_srv_name     = var.api_srv_name
+  api_pass         = var.api_pass
+  api_root_user    = var.api_root_user
+  api_disk_caching = var.api_disk_caching
+  api_nic_id       = ["${module.main_app_vnet.database_nic}"]
+}
 
 /*
 module "secgroup" {

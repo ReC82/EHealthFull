@@ -5,12 +5,12 @@
 ####################
 # Web Storage Account
 ####################
-resource "azurerm_storage_account" "storacc_linux" {
+resource "azurerm_storage_account" "storacc_db_linux" {
   name                     = "diag${random_id.randomId.hex}"
-  location                 = azurerm_resource_group.rg_linux.location
+  location                 = var.app_location
   account_tier             = "Standard"
   account_replication_type = "LRS"
-  resource_group_name      = azurerm_resource_group.rg_linux.name
+  resource_group_name      = var.app_ressource_group_name
   tags = {
     env = "prod"
   }
@@ -18,7 +18,7 @@ resource "azurerm_storage_account" "storacc_linux" {
 
 resource "random_id" "randomId" {
   keepers = {
-    resource_group = azurerm_resource_group.rg_linux.name
+    resource_group = var.app_location
   }
   byte_length = 8
 }
@@ -29,16 +29,16 @@ resource "random_id" "randomId" {
 
 resource "azurerm_linux_virtual_machine" "ehealth_db_srv" {
   name                            = var.db_srv_name
-  location                        = var.db_location
+  location                        = var.app_location
   network_interface_ids           = var.db_nic_id
   admin_username                  = var.db_root_user
   disable_password_authentication = var.dis_pwd_auth
   admin_password = var.db_pass
-  resource_group_name             = var.db_rg_group_name
+  resource_group_name             = var.app_ressource_group_name
   size                            = var.db_srv_size
   os_disk {
     name                 = var.db_srv_disk_name
-    caching              = var.db_disk.caching
+    caching              = var.db_disk_caching
     storage_account_type = var.db_srv_disk_storage_account_type
   }
 

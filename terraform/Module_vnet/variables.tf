@@ -23,5 +23,4 @@ variable "subnet_prefixes" {
 variable "subnet_names" {
   description = "A list of subnet names inside the vNet"
   type        = list(string)
-  default     = ["Subnet"]
 }

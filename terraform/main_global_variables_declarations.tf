@@ -6,10 +6,11 @@ variable "app_location" {
   default = "centralus"
 }
 
-/*
-variable "ehealth_rg_name" {
+variable "app_ressource_group_name" {
   description = "Resource group name"
 }
+
+/*
 
 variable "ehealth_vnet_ip_range" {
   type    = list(string)

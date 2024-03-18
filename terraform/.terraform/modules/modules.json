@@ -1,1 +1,1 @@
-{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"db","Source":"./DB","Dir":"DB"}]}
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"db","Source":"./DB","Dir":"DB"},{"Key":"main_app_database","Source":"./Module_Database","Dir":"Module_Database"},{"Key":"main_app_vnet","Source":"./Module_vnet","Dir":"Module_vnet"}]}

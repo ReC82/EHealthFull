@@ -12,19 +12,34 @@ module "vnet" {
 }*/
 
 resource "azurerm_resource_group" "rg_ehealth" {
-  name     = var.db_rg_group_name
+  name     = var.app_ressource_group_name
   location = var.app_location
 }
 
+###############
+# MODULE : VNET
+###############
+module "main_app_vnet" {
+  source = "./Module_vnet"
+  subnet_names = var.subnet_names
+  subnet_prefixes = var.subnet_prefixes
+}
+
+###############
+# MODULE : DATABASE
+###############
 module "main_app_database" {
-  source           = "./Modules_Database"
-  db_pass          = var.db_pass
-  db_root_user     = var.db_root_user
-  db_disk_caching  = var.db_disk_caching
-  db_location      = var.db_location
-  db_nic_id        = var.db_nic_id
-  db_rg_group_name = var.db_rg_group_name
-  //db_storage_account = var.db_storage_account
+
+  source = "./Module_Database"
+
+  app_ressource_group_name = var.app_ressource_group_name
+  app_location             = var.app_location
+
+  db_srv_name     = var.db_srv_name
+  db_pass         = var.db_pass
+  db_root_user    = var.db_root_user
+  db_disk_caching = var.db_disk_caching
+  db_nic_id       = ["${module.main_app_vnet.database_nic}"]
 }
 
 /*
@@ -43,8 +58,5 @@ module "secgroup" {
     # Variable Environment
     nsg_tags            = var.nsg_tags
 }
-
-module "vnet" {
-    source              = "./vnet"  
-}
 */
+

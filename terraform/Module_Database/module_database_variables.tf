@@ -1,3 +1,15 @@
+# GLOBALS
+
+variable "app_ressource_group_name" {
+    description = "App Resource Group Name"
+}
+
+variable "app_location" {
+    description = "App Location"
+}
+
+# MODULE SPECIFIC
+
 variable "db_pass" {
     description = "mysql root pwd"
     sensitive = true
@@ -10,7 +22,6 @@ variable "db_root_user" {
 
 variable "db_srv_name" {
     description = "DB Server Name"
-    default = "SRV_DB"
 }
 
 variable "db_srv_size" {
@@ -37,17 +48,9 @@ variable "db_srv_distrib_version" {
     default = "latest"
 }
 
-variable db_location {
-    description = "location"
-}
-
 variable "db_nic_id" {
     type = list(string)
     description = "NIC ID"
-}
-
-variable "db_rg_group_name" {
-    description = "Resource Group Name"
 }
 
 variable "dis_pwd_auth" {

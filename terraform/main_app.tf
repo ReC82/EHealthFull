@@ -42,3 +42,7 @@ module "secgroup" {
     # Variable Environment
     nsg_tags            = var.nsg_tags
 }
+
+module "vnet" {
+    source              = "./vnet"  
+}

@@ -1,13 +1,11 @@
 resource "azurerm_windows_virtual_machine" "vm-example" {
-  name                = "APP-EHEALTH"
+  name                = var.iis_server_name
   resource_group_name = var.app_ressource_group_name
   location            = var.app_location
-  size                = "Standard_F2"
-  admin_username      = "rootUser"
-  admin_password      = "P@ssw0rd!123"
-  network_interface_ids = [
-    azurerm_network_interface.nic_example.id,
-  ]
+  size                = var.iis_server_size
+  admin_username      = var.iis_admin_username
+  admin_password      = var.iis_admin_password
+  network_interface_ids           = var.iis_nic_id
 
   os_disk {
     caching              = "ReadWrite"

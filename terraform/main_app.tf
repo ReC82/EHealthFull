@@ -20,8 +20,8 @@ resource "azurerm_resource_group" "rg_ehealth" {
 # MODULE : VNET
 ###############
 module "main_app_vnet" {
-  source = "./Module_vnet"
-  subnet_names = var.subnet_names
+  source          = "./Module_vnet"
+  subnet_names    = var.subnet_names
   subnet_prefixes = var.subnet_prefixes
 }
 
@@ -41,6 +41,24 @@ module "main_app_database" {
   db_disk_caching = var.db_disk_caching
   db_nic_id       = ["${module.main_app_vnet.database_nic}"]
 }
+
+####################
+# MODULE : IIS
+####################
+
+module "main_app_web_server" {
+  app_location             = var.app_location
+  app_ressource_group_name = var.app_ressource_group_name
+
+  iis_nic_id = ["${module.main_app_vnet.database_nic}"]
+
+  source             = "./Module_IIS_Server"
+  iis_server_name    = var.iis_server_name
+  iis_server_size    = var.iis_server_size
+  iis_admin_username = var.iis_admin_username
+  iis_admin_password = var.iis_admin_password
+}
+
 
 /*
 module "secgroup" {

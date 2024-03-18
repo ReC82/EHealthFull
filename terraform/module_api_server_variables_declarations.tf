@@ -1,15 +1,3 @@
-# GLOBALS
-
-variable "app_ressource_group_name" {
-  description = "App Resource Group Name"
-}
-
-variable "app_location" {
-  description = "App Location"
-}
-
-# MODULE SPECIFIC
-
 variable "api_pass" {
   description = "api server - root pwd"
   sensitive   = true
@@ -53,7 +41,7 @@ variable "api_nic_id" {
   description = "NIC ID"
 }
 
-variable "dis_pwd_auth" {
+variable "api_dis_pwd_auth" {
   description = "Disable password authentication (default : false)"
   default     = false
 }

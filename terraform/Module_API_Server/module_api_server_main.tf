@@ -28,7 +28,7 @@ resource "azurerm_linux_virtual_machine" "ehealth_api_srv" {
   location                        = var.app_location
   network_interface_ids           = var.api_nic_id
   admin_username                  = var.api_root_user
-  disable_password_authentication = var.dis_pwd_auth
+  disable_password_authentication = var.api_dis_pwd_auth
   admin_password = var.api_pass
   resource_group_name             = var.app_ressource_group_name
   size                            = var.api_srv_size

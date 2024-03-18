@@ -53,7 +53,7 @@ variable "api_nic_id" {
     description = "NIC ID"
 }
 
-variable "dis_pwd_auth" {
+variable "api_dis_pwd_auth" {
     description = "Disable password authentication (default : false)"
     default = false
 }

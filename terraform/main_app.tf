@@ -12,21 +12,22 @@ module "vnet" {
 }*/
 
 resource "azurerm_resource_group" "rg_ehealth" {
-  name = var.db_rg_group_name
+  name     = var.db_rg_group_name
   location = var.app_location
 }
 
-module "db" {
-  source             = "./DB"
-  db_pass            = var.db_pass
-  db_root_user       = var.db_root_user
-  db_disk_caching    = var.db_disk_caching
-  db_location        = var.db_location
-  db_nic_id          = var.db_nic_id
-  db_rg_group_name   = var.db_rg_group_name
+module "main_app_database" {
+  source           = "./Modules_Database"
+  db_pass          = var.db_pass
+  db_root_user     = var.db_root_user
+  db_disk_caching  = var.db_disk_caching
+  db_location      = var.db_location
+  db_nic_id        = var.db_nic_id
+  db_rg_group_name = var.db_rg_group_name
   //db_storage_account = var.db_storage_account
 }
 
+/*
 module "secgroup" {
     source              = "./security-group"
 
@@ -46,3 +47,4 @@ module "secgroup" {
 module "vnet" {
     source              = "./vnet"  
 }
+*/

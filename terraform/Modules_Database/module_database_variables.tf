@@ -64,10 +64,6 @@ variable db_src_img_ref_publisher {
     description = "publisher of the image used"
     default = "Canonical"
 }
-/*
-variable "db_storage_account" {
-    default = azurerm_storage_account.storacc_db_linux.primary_blob_endpoint
-}*/
 
 variable "db_tags" {
     type = map(string)

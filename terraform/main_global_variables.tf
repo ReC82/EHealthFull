@@ -6,6 +6,7 @@ variable "app_location" {
   default = "centralus"
 }
 
+/*
 variable "ehealth_rg_name" {
   description = "Resource group name"
 }
@@ -24,3 +25,4 @@ variable "ehealth_subnets_names" {
   type    = list(string)
   default = ["sub-app", "sub-api", "sub-db"]
 }
+*/

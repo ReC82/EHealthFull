@@ -1,7 +1,7 @@
-db_location                      = "centralus"
-db_root_user                     = "admin_db"
-db_pass                          = "db_password"
-db_storage_account               = azurerm_storage_account.storacc_db_linux.primary_blob_endpoint
+db_location  = "centralus"
+db_root_user = "admin_db"
+db_pass      = "db_password"
+//db_storage_account               = azurerm_storage_account.storacc_db_linux.primary_blob_endpoint
 db_disk_caching                  = "ReadWrite"
 db_nic_id                        = ["value"]
 db_rg_group_name                 = "rg_ehealth"

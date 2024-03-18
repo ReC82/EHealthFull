@@ -36,7 +36,7 @@ resource "azurerm_linux_virtual_machine" "ehealth_db_srv" {
   }
 
   boot_diagnostics {
-    storage_account_uri = azurerm_storage_account
+    storage_account_uri = azurerm_storage_account.storacc_db_linux.primary_blob_endpoint
   }
 
   tags = var.db_tags

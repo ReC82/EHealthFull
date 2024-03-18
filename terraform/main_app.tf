@@ -11,7 +11,6 @@ module "vnet" {
 
 }*/
 
-<<<<<<< HEAD
 resource "azurerm_resource_group" "rg_ehealth" {
   name = var.db_rg_group_name
   location = var.app_location
@@ -26,14 +25,6 @@ module "db" {
   db_nic_id          = var.db_nic_id
   db_rg_group_name   = var.db_rg_group_name
   //db_storage_account = var.db_storage_account
-=======
-module "db" {
-  source          = "./module_vnet"
-  rg_name         = var.ehealth_rg_name
-  vnet_ip_range   = var.ehealth_vnet_ip_range
-  subnet_prefixes = var.ehealth_subnets
-  subnet_names    = var.ehealth_subnets_names
->>>>>>> 570d26b (add variable in module secgroup)
 }
 
 module "secgroup" {

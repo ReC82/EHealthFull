@@ -20,7 +20,7 @@ resource "random_id" "randomId" {
 }
 
 ###########################
-# DB VM
+# API VM
 ###########################
 
 resource "azurerm_linux_virtual_machine" "ehealth_api_srv" {
@@ -58,6 +58,5 @@ resource "azurerm_linux_virtual_machine" "ehealth_api_srv" {
 
   tags = var.api_tags
 
-  //depends_on = [azurerm_resource_group.rg_ehealth, azurerm_network_interface.nic_db, azurerm_storage_account.storacc_api_linux]
 }
 

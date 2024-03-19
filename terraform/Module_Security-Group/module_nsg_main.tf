@@ -51,7 +51,7 @@ resource "azurerm_network_security_group" "nsg_app" {
 
 # Create Network Security Group and rule nsg2_api
 resource "azurerm_network_security_group" "nsg_api_java" {
-    name                = var.nsg_api_name
+    name                = var.nsg_api_java_name
     location            = azurerm_resource_group.rg.location
     resource_group_name = azurerm_resource_group.rg.name
 
@@ -72,7 +72,7 @@ resource "azurerm_network_security_group" "nsg_api_java" {
 
 # Create Network Security Group and rule nsg3_db
 resource "azurerm_network_security_group" "nsg_db_mysql" {
-    name                = var.nsg_db_name
+    name                = var.nsg_db_mysql_name
     location            = azurerm_resource_group.rg.location
     resource_group_name = azurerm_resource_group.rg.name
 
@@ -91,23 +91,6 @@ resource "azurerm_network_security_group" "nsg_db_mysql" {
     tags = var.nsg_tags
 }
 
-# Create network interface
-resource "azurerm_network_interface" "app-nic" {
-    name                = var.network_interface_name
-    location            = azurerm_resource_group.rg.location
-    resource_group_name = azurerm_resource_group.rg.name
-
-    ip_configuration {
-        name                          = "internal"
-        subnet_id                     = azurerm_subnet.subnet_id.id
-        private_ip_address_allocation = "Dynamic"
-        public_ip_address_id          = azurerm_public_ip.public_ip.id
-    }
-
-    tags = {
-        environment = var.nsg_tags
-    }
-}
 
 /* 
 

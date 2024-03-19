@@ -23,24 +23,18 @@ variable "nsg_app_name" {
     description = " APP NSG Ehealth in Azure"
 }
 
-variable "nsg_api_name" {
+variable "nsg_api_java_name" {
     type        = string
     default     = ""
     description = "API NSG Ehealth in Azure"
 }
 
-variable "nsg_db_name" {
+variable "nsg_db_mysql_name" {
     type        = string
     default     = ""
     description = "DB NSG Ehealth in Azure"
 }
 
-# Variable for network_interface
-variable "network_interface_name" {
-    type        = string
-    default     = ""
-    description = "Network interface name Ehealth in Azure"
-}
 
 # Variable environement
 variable "nsg_tags" {

@@ -82,6 +82,28 @@ module "main_app_api" {
   depends_on = [azurerm_resource_group.rg_ehealth]
 }
 
+#################################
+# MODULE : NETWORK SECURITY GROUP
+#################################
+module "main_app_secgroup" {
+    source              = "./Module_Security-Group"
+
+     # Variable for Resource Group
+    nsg_rg_group_name   = var.app_ressource_group_name
+    nsg_rg_location     = var.app_location
+  
+    # Variable for Network Security Group
+    nsg_app_name        = var.nsg_app
+    nsg_api_java_name   = var.nsg_api_java
+    nsg_db_mysql_name   = var.nsg_db_mysql  
+  
+    # Variable Environment
+    nsg_tags            = var.nsg_tags
+
+    # Recover network security group IDs exported from Module_Security-Group
+    nsg_ids             = module.main_app_secgroup.nsg_ids
+}
+
 /*
 module "secgroup" {
     source              = "./security-group"

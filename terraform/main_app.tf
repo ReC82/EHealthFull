@@ -104,21 +104,4 @@ module "main_app_secgroup" {
     nsg_ids             = module.main_app_secgroup.nsg_ids
 }
 
-/*
-module "secgroup" {
-    source              = "./security-group"
-
-     # Variable for Resource Group
-    nsg_rg_group_name   = var.nsg_rg_group_name
-    nsg_rg_location     = var.nsg_rg_location
-  
-    # Variable for Network Security Group
-    nsg_app_name        = var.nsg_app
-    nsg_api_name        = var.nsg_api
-    nsg_db_name         = var.nsg_db  
-  
-    # Variable Environment
-    nsg_tags            = var.nsg_tags
-}
-*/
 

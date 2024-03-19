@@ -40,6 +40,8 @@ module "main_app_database" {
   db_root_user    = var.db_root_user
   db_disk_caching = var.db_disk_caching
   db_nic_id       = ["${module.main_app_vnet.database_nic}"]
+
+  depends_on = [azurerm_resource_group.rg_ehealth]
 }
 
 ####################
@@ -57,6 +59,8 @@ module "main_app_web_server" {
   iis_server_size    = var.iis_server_size
   iis_admin_username = var.iis_admin_username
   iis_admin_password = var.iis_admin_password
+
+  depends_on = [azurerm_resource_group.rg_ehealth]
 }
 
 ###############
@@ -74,6 +78,8 @@ module "main_app_api" {
   api_root_user    = var.api_root_user
   api_disk_caching = var.api_disk_caching
   api_nic_id       = ["${module.main_app_vnet.database_nic}"]
+
+  depends_on = [azurerm_resource_group.rg_ehealth]
 }
 
 /*

@@ -1,72 +1,61 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+using EhealthV2.Data;
+using EhealthV2.Repositories.Users;
+using EhealthV2.Repositories.Login;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore.Sqlite;
+using Microsoft.Extensions.Configuration;
+// ADD (https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx?view=aspnetcore-8.0&tabs=linux-ubuntu)
+using Microsoft.AspNetCore.HttpOverrides;
 
-public class Startup
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.AddRazorPages();
+
+builder.Services.AddTransient<IDoctorsController, DoctorsController>();
+builder.Services.AddTransient<ILoginController, LoginController>();
+builder.Services.AddTransient<IClinicsController, ClinicController>();
+//string MSSQL = "Server=(localdb)\\MSSQLLocalDB;Database=ehealth;Trusted_Connection=True;MultipleActiveResultSets=true";
+string SQLITE = "Data Source=ehealth.db";
+builder.Services.AddDbContext<DoctorsContext>(options => options.UseSqlite(SQLITE));
+
+builder.Services.AddCors(options =>
 {
-    public void ConfigureServices(IServiceCollection services)
-    {
-        services.AddRazorPages();
+    options.AddPolicy("AllowOrigin", builder =>
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader());
+});
 
-        services.AddTransient<IDoctorsController, DoctorsController>();
-        services.AddTransient<ILoginController, LoginController>();
-        services.AddTransient<IClinicsController, ClinicController>();
 
-        string SQLITE = "Data Source=ehealth.db";
-        services.AddDbContext<DoctorsContext>(options => options.UseSqlite(SQLITE));
+builder.Services.AddControllersWithViews();
+builder.Services.AddMvc();
 
-        services.AddCors(options =>
-        {
-            options.AddPolicy("AllowOrigin", builder =>
-                builder.AllowAnyOrigin()
-                       .AllowAnyMethod()
-                       .AllowAnyHeader());
-        });
+var app = builder.Build();
 
-        services.AddControllersWithViews();
-    }
-
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-    {
-        if (env.IsDevelopment())
-        {
-            app.UseDeveloperExceptionPage();
-        }
-        else
-        {
-            app.UseExceptionHandler("/Error");
-            app.UseHsts();
-        }
-
-        app.UseHttpsRedirection();
-        app.UseStaticFiles();
-
-        app.UseRouting();
-        app.UseCors("AllowOrigin");
-
-        app.UseAuthorization();
-
-        app.UseEndpoints(endpoints =>
-        {
-            endpoints.MapControllerRoute(
-                name: "EHealthV2",
-                pattern: "{controller}/{action}/{id?}");
-            endpoints.MapRazorPages();
-        });
-
-        // Handle requests for directories
-        app.Use(async (context, next) =>
-        {
-            if (context.Request.Path.HasValue && context.Request.Path.Value.EndsWith("/"))
-            {
-                context.Response.Redirect("/"); // Redirect to the root page or any custom page
-                return;
-            }
-
-            await next();
-        });
-    }
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Error");
 }
+
+app.UseStaticFiles();
+
+// ADD
+app.UseForwardedHeaders(new ForwardedHeadersOptions
+{
+    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+});
+       
+app.UseRouting();
+app.UseCors("AllowOrigin");
+
+app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "EHealthV2",
+    pattern: "{controller}/{action}/{id?}");
+
+app.MapRazorPages();
+
+app.Run();

@@ -44,7 +44,17 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<!-- Add maven-war-plugin with exclusion configuration -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.3</version>
+				<configuration>
+					<packagingExcludes>
+						**/.classpath, **/.project, **/.settings/
+					</packagingExcludes>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
-
 </project>

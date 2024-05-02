@@ -1,0 +1,54 @@
+pipeline {
+    agent none
+
+    environment {
+        RECIPIENTS = 'lloyd.malfliet@gmail.com'
+        SENDER_EMAIL = 'jenkins@lodywood.be'
+    }
+
+    stages {
+                
+        stage('Checkout') {
+            agent { label 'java' }
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('SonarQube Analysis') {
+            agent { label 'java' }
+            steps {
+                script {
+                    def scannerHome = tool 'JenkinsScan'
+                    withSonarQubeEnv('mysonar') { 
+                        sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey='wscicd'" 
+                    }
+                }
+            }
+        }
+
+        stage('Quality Gate') {
+            steps {
+                script {
+                    def qg = waitForQualityGate()
+                    if (qg.status != 'OK') {
+                        error "Pipeline aborted due to quality gate failure: ${qg.status}"
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            emailext(
+                subject: "Jenkins Pipeline: ${currentBuild.fullDisplayName} - ${currentBuild.result}",
+                body: """Build Number: ${currentBuild.number}
+                        Build Result: ${currentBuild.result}
+                        Build URL: ${env.BUILD_URL}""",
+                to: env.RECIPIENTS,
+                from: env.SENDER_EMAIL
+            )
+        }
+    }
+}
